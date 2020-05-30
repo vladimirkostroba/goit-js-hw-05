@@ -1,8 +1,8 @@
 class Car {
-  constructor(maxSpeed, price) {
+  constructor(obj) {
     this.speed = 0;
-    this.$price = price;
-    this.maxSpeed = maxSpeed;
+    this.$price = obj.price;
+    this.maxSpeed = obj.maxSpeed;
     this.isOn = false;
     this.distance = 0;
   }
@@ -38,7 +38,7 @@ class Car {
   }
 
   decelerate(value) {
-    if (value >= 0) {
+    if (this.speed - value >= 0) {
       this.speed -= value;
     }
   }
@@ -50,7 +50,7 @@ class Car {
   }
 }
 
-const mustang = new Car(200, 2000);
+const mustang = new Car({ maxSpeed: 200, price: 2000 });
 
 mustang.turnOn();
 mustang.accelerate(50);
